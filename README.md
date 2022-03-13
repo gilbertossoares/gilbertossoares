@@ -1,4 +1,14 @@
-### Hi there 👋
+### Oi 👋
+
+Aqui vou compartilhar um pouco sobre minha jornanda de aprendizado e compartilhamento de ideias e conhecimento. Aqui alguns tópicos que vou desenvolver aqui:
+
+- 📊 Análise de dados
+- 🐍 Python
+- ⚙️ Engenharia de dados
+- 🤖 Aprendizado de máquina
+- 🦾 Inteligência artificial 
+- ☁️ Azure
+- 🎲 a lot about data
 
 <!--
 **gilbertossoares/gilbertossoares** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
