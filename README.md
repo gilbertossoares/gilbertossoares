@@ -1,14 +1,16 @@
-### Oi 👋
+### Hello 👋
 
-Aqui vou compartilhar um pouco sobre minha jornanda de aprendizado e compartilhamento de ideias e conhecimento. Aqui alguns tópicos que vou desenvolver aqui:
+Here I share about my journey in the data world and share ideas and knowledge. This is a list of topics I desenvolve here:
 
-- 📊 Análise de dados
+- 📊 Data Analysis
 - 🐍 Python
-- ⚙️ Engenharia de dados
-- 🤖 Aprendizado de máquina
-- 🦾 Inteligência artificial 
+- ⚙️ Data Engineering
+- 🤖 Machine Learning
+- 🦾 Artificial Intelligence
 - ☁️ Azure
 - 🎲 a lot about data
+
+
 
 <!--
 **gilbertossoares/gilbertossoares** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
