@@ -1,14 +1,17 @@
-### Hello 👋
+# Hi, I'm Gilberto 👋
 
-Here I share about my journey in the data world and share ideas and knowledge. This is a list of topics I desenvolve here:
+I'm a lifelong learner exploring Artificial Intelligence, Data, Cloud Architecture, and Intelligent Systems.
 
-- 📊 Data Analysis
-- 🐍 Python
-- ⚙️ Data Engineering
-- 🤖 Machine Learning
-- 🦾 Artificial Intelligence
-- ☁️ Azure
-- 🎲 a lot about data
+This GitHub is where I organize studies, experiments, prototypes, and technical ideas around:
+
+- Generative AI and LLMs
+- Data Engineering and Analytics
+- Azure and Cloud Architecture
+- Machine Learning and AI Engineering
+- AI Security and Responsible AI
+- Agents, RAG, and applied AI systems
+
+I use this space to learn in public, document experiments, and connect technical studies with real-world problems.
 
 
 
