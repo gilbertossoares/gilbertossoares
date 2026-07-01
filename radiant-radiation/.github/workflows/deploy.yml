@@ -10,16 +10,47 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout your repository
+      - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Install, build, and upload your site
-        uses: withastro/action@v6
+      - name: Setup Node
+        uses: actions/setup-node@v5
         with:
-          path: ./radiant-radiation
-          package-manager: npm
+          node-version: 22
+          cache: npm
+          cache-dependency-path: radiant-radiation/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: radiant-radiation
+
+      - name: Build
+        run: npm run build
+        working-directory: radiant-radiation
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: radiant-radiation/dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
