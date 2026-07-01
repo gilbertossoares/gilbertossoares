@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0 auto;
+			}
+
+			article {
+				padding-bottom: 3rem;
+			}
+
+			.hero-image {
+				width: 100%;
+				margin-top: 2rem;
+			}
+
+			.hero-image img {
+				display: block;
+				width: 100%;
+				max-width: 1020px;
+				height: auto;
+				margin: 0 auto;
+				border-radius: 16px;
+				box-shadow: var(--box-shadow);
+			}
+
+			.prose {
+				width: 800px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1.5em 1em;
+				color: rgb(var(--gray-dark));
+			}
+
+			.title {
+				margin-bottom: 2em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1.2;
+			}
+
+			.title h1 {
+				margin: 0.4em 0 0.6em 0;
+				font-size: clamp(2rem, 5vw, 3.5rem);
+			}
+
+			.description {
+				max-width: 680px;
+				margin: 0 auto 1.5em auto;
+				color: rgb(var(--gray));
+				font-size: 1.1rem;
+				line-height: 1.6;
+			}
+
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+				font-size: 0.95rem;
+			}
+
+			.last-updated-on {
+				margin-top: 0.25em;
+				font-style: italic;
+			}
+
+			hr {
+				border: none;
+				border-top: 1px solid rgb(var(--gray-light));
+				margin-top: 2em;
+			}
+
+			.content {
+				max-width: 760px;
+				margin: 0 auto;
+			}
+
+			.content :global(p),
+			.content :global(ul),
+			.content :global(ol),
+			.content :global(blockquote),
+			.content :global(pre),
+			.content :global(table) {
+				max-width: 760px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.content :global(p) {
+				line-height: 1.75;
+				margin-bottom: 1.5em;
+			}
+
+			.content :global(img) {
+				display: block;
+				max-width: 100%;
+				margin: 2rem auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<article>
+				{
+					heroImage && (
+						<div class="hero-image">
+							<Image width={1020} height={510} src={heroImage} alt={`${title} cover image`} />
+						</div>
+					)
+				}
+
+				<div class="prose">
+					<header class="title" aria-labelledby="article-title">
+						<div class="date">
+							Published on <FormattedDate date={pubDate} />
+
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+
+						<h1 id="article-title">{title}</h1>
+
+						{
+							description && (
+								<p class="description">
+									{description}
+								</p>
+							)
+						}
+
+						<hr />
+					</header>
+
+					<div class="content">
+						<slot />
+					</div>
+				</div>
+			</article>
+		</main>
+
+		<Footer />
+	</body>
+</html>

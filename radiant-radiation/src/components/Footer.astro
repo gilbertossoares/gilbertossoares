@@ -1,0 +1,56 @@
+---
+const today = new Date();
+---
+
+<footer>
+	<p>
+		&copy; {today.getFullYear()} Gilberto Santos. All rights reserved.
+	</p>
+
+	<p class="description">
+		Sharing knowledge about Artificial Intelligence, Cloud Architecture, Data and Software Engineering.
+	</p>
+
+	<div class="social-links">
+		<a href="https://github.com/gilbertossoares" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+			GitHub
+		</a>
+
+		<a href="https://www.linkedin.com/in/gilbertossoares" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+			LinkedIn
+		</a>
+	</div>
+</footer>
+
+<style>
+	footer {
+		padding: 2em 1em 4em 1em;
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		color: rgb(var(--gray));
+		text-align: center;
+	}
+
+	footer p {
+		margin: 0.4em 0;
+	}
+
+	.description {
+		font-size: 0.95rem;
+	}
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+
+	.social-links a {
+		text-decoration: none;
+		color: rgb(var(--gray));
+	}
+
+	.social-links a:hover {
+		color: rgb(var(--gray-dark));
+	}
+</style>

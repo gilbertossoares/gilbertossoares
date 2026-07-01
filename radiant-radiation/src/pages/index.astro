@@ -1,0 +1,172 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section class="hero">
+				<p class="eyebrow">AI • Cloud • Data • Research</p>
+
+				<h1>Gilberto Santos</h1>
+
+				<p class="lead">
+					I write about artificial intelligence, solution architecture, data, cloud,
+					digital products and technical experiments.
+				</p>
+
+				<p>
+					This space brings together articles, projects, research notes, lessons learned
+					and work-in-progress ideas. It is where I publish with more depth than on social media.
+				</p>
+
+				<div class="actions">
+					<a class="button primary" href="/blog/">Read articles</a>
+					<a class="button secondary" href="/about/">About me</a>
+				</div>
+			</section>
+
+			<section class="cards">
+				<a class="card" href="/blog/">
+					<span>Articles</span>
+					<p>Technical writing about AI, LLMs, Azure, data, architecture and engineering.</p>
+				</a>
+
+				<a class="card" href="/projects/">
+					<span>Projects</span>
+					<p>Experiments, prototypes, applications and ideas I am building or exploring.</p>
+				</a>
+
+				<a class="card" href="/about/">
+					<span>About</span>
+					<p>My background, technical interests, talks, projects and links.</p>
+				</a>
+			</section>
+
+			<section>
+				<h2>Main topics</h2>
+
+				<ul class="topics">
+					<li>Artificial Intelligence and LLMs</li>
+					<li>Azure, data and solution architecture</li>
+					<li>Agents, RAG and practical AI applications</li>
+					<li>Quantum computing and applied learning</li>
+					<li>Personal projects, web games and technical experiments</li>
+				</ul>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		padding: 2rem 0 3rem;
+	}
+
+	.eyebrow {
+		color: var(--accent);
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.lead {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: rgb(var(--black));
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+
+	.button {
+		display: inline-block;
+		padding: 0.75rem 1rem;
+		border-radius: 999px;
+		text-decoration: none;
+		font-weight: 700;
+	}
+
+	.button.primary {
+		background: var(--accent);
+		color: white;
+	}
+
+	.button.primary:hover {
+		background: var(--accent-dark);
+		color: white;
+	}
+
+	.button.secondary {
+		border: 1px solid rgb(var(--gray-light));
+		color: rgb(var(--gray-dark));
+		background: white;
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin: 2rem 0 3rem;
+	}
+
+	.card {
+		display: block;
+		padding: 1.2rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 16px;
+		background: rgba(255, 255, 255, 0.75);
+		box-shadow: var(--box-shadow);
+		text-decoration: none;
+		color: rgb(var(--gray-dark));
+	}
+
+	.card:hover {
+		transform: translateY(-2px);
+		color: rgb(var(--gray-dark));
+	}
+
+	.card span {
+		display: block;
+		margin-bottom: 0.5rem;
+		color: rgb(var(--black));
+		font-weight: 700;
+		font-size: 1.1rem;
+	}
+
+	.card p {
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.topics {
+		display: grid;
+		gap: 0.5rem;
+		padding-left: 1.2rem;
+	}
+
+	@media (max-width: 720px) {
+		.cards {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,152 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const title = 'Projects';
+const description = 'Public GitHub projects by Gilberto Santos.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section class="hero">
+				<p class="eyebrow">GitHub • Experiments • Code</p>
+				<h1>Projects</h1>
+				<p>
+					Public repositories, workshops and technical experiments that I maintain on GitHub.
+				</p>
+			</section>
+
+			<section class="project-list">
+				<article class="project-card">
+					<div>
+						<p class="status">Public project</p>
+						<h2>Anonimizer</h2>
+						<p>
+							A document anonymization application built with Azure AI services, focused on
+							detecting and removing personally identifiable information (PII). It includes
+							document upload, processing and a web interface.
+						</p>
+						<p class="tags">Azure AI • PII • Python • Flask • Documents</p>
+					</div>
+
+					<a href="https://github.com/gilbertossoares/anonimizer" target="_blank" rel="noopener noreferrer">
+						View on GitHub →
+					</a>
+				</article>
+
+				<article class="project-card">
+					<div>
+						<p class="status">Workshop</p>
+						<h2>Azure AI Foundry Workshop</h2>
+						<p>
+							A hands-on workshop with labs and code examples for exploring Azure AI Foundry,
+							Azure OpenAI, AI services, prompt engineering, Semantic Kernel, AutoGen and RAG
+							with Azure AI Search.
+						</p>
+						<p class="tags">Azure AI Foundry • Azure OpenAI • RAG • Agents • Workshop</p>
+					</div>
+
+					<a href="https://github.com/gilbertossoares/ai-foundry-workshop" target="_blank" rel="noopener noreferrer">
+						View on GitHub →
+					</a>
+				</article>
+
+				<article class="project-card">
+					<div>
+						<p class="status">Benchmark</p>
+						<h2>Vector Azure Benchmark</h2>
+						<p>
+							A benchmark suite for comparing vector search performance across platforms such as
+							Azure, Databricks and Microsoft Fabric, measuring latency, throughput, consistency
+							and metrics such as P95 and P99.
+						</p>
+						<p class="tags">Vector Search • Azure • Databricks • Microsoft Fabric • Benchmark</p>
+					</div>
+
+					<a href="https://github.com/gilbertossoares/demo-vector-benchmark" target="_blank" rel="noopener noreferrer">
+						View on GitHub →
+					</a>
+				</article>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		margin-bottom: 2.5rem;
+	}
+
+	.eyebrow {
+		color: var(--accent);
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.hero p:last-child {
+		font-size: 1.15rem;
+		color: rgb(var(--gray));
+	}
+
+	.project-list {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.project-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1.5rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 18px;
+		background: rgba(255, 255, 255, 0.78);
+		box-shadow: var(--box-shadow);
+	}
+
+	.project-card h2 {
+		margin-top: 0;
+		margin-bottom: 0.75rem;
+		font-size: 1.6rem;
+	}
+
+	.project-card p {
+		margin-bottom: 0.75rem;
+	}
+
+	.project-card a {
+		width: fit-content;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.status {
+		margin-bottom: 0.5rem;
+		color: var(--accent);
+		font-size: 0.85rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.tags {
+		color: rgb(var(--gray));
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+</style>

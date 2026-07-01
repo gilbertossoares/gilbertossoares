@@ -1,0 +1,128 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const title = 'About';
+const description =
+	'About Gilberto Santos: Artificial Intelligence, Solution Architecture, Cloud, Data and technical projects.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section class="hero">
+				<p class="eyebrow">About</p>
+
+				<h1>Gilberto Santos</h1>
+
+				<p class="lead">
+					Cloud Solution Architect, AI enthusiast and builder of technical projects.
+				</p>
+			</section>
+
+			<section>
+				<p>
+					I am a technology professional focused on Artificial Intelligence, data,
+					solution architecture and cloud computing. My work is centered on designing
+					practical solutions that connect business challenges with modern AI and cloud technologies.
+				</p>
+
+				<p>
+					This website is where I share articles, technical projects, experiments and
+					continuous learning. My goal is to document my journey and publish content in
+					a format that allows for deeper discussions than traditional social media.
+				</p>
+			</section>
+
+			<section>
+				<h2>Areas of Interest</h2>
+
+				<ul class="topics">
+					<li>Artificial Intelligence and LLMs</li>
+					<li>Cloud Solution Architecture</li>
+					<li>Azure, Data Engineering and Machine Learning</li>
+					<li>RAG, AI Agents and Generative AI applications</li>
+					<li>Quantum Computing</li>
+					<li>Technical projects, web applications and software engineering</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Projects</h2>
+
+				<p>
+					My public work is available on GitHub and includes projects related to
+					document anonymization, Azure AI, vector search benchmarking, workshops,
+					technical experiments and software prototypes.
+				</p>
+
+				<p>
+					I also use this space to organize ideas from my graduate studies,
+					conference talks, technical writing and ongoing learning in Artificial
+					Intelligence, cloud computing and emerging technologies.
+				</p>
+			</section>
+
+			<section>
+				<h2>Find me</h2>
+
+				<ul>
+					<li>
+						<a
+							href="https://github.com/gilbertossoares"
+							target="_blank"
+							rel="noopener noreferrer">
+							GitHub
+						</a>
+					</li>
+
+					<li>
+						<a
+							href="https://www.linkedin.com/in/gilbertossoares"
+							target="_blank"
+							rel="noopener noreferrer">
+							LinkedIn
+						</a>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		margin-bottom: 2rem;
+	}
+
+	.eyebrow {
+		color: var(--accent);
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.lead {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: rgb(var(--black));
+	}
+
+	.topics {
+		display: grid;
+		gap: 0.5rem;
+		padding-left: 1.2rem;
+	}
+</style>
