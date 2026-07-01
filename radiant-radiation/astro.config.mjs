@@ -8,7 +8,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://gilbertossoares.github.io/gilbertossoares',
+	site: 'https://gilbertossoares.github.io',
+	base: '/gilbertossoares',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
