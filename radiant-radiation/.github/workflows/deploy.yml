@@ -20,3 +20,6 @@ jobs:
 
       - name: Install, build, and upload your site
         uses: withastro/action@v6
+        with:
+          path: ./radiant-radiation
+          package-manager: npm
