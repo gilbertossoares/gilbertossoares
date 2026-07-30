@@ -19,6 +19,9 @@ const blog = defineCollection({
 
 			lang: z.enum(['en', 'pt-BR']).default('en'),
 
+			// Shared key linking a post to its translation in the other language (posts don't share slugs across languages).
+			translationKey: z.string().optional(),
+
 			draft: z.boolean().default(false),
 
 			featured: z.boolean().default(false),

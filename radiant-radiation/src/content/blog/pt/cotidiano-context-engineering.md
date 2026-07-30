@@ -4,6 +4,7 @@ description: 'O que é Engenharia de Contexto na prática e como pode ser aplica
 pubDate: 'Aug 01 2025'
 heroImage: '../../../../public/images/1754066678093.jpeg'
 lang: "pt-BR"
+translationKey: "daily-context-engineering"
 ---
 
 Nos últimos dois anos, estive envolvido em diversos projetos com clientes relacionados à Generative AI e quero começar a compartilhar aqui algumas experiências práticas, não apenas para dividir aprendizados, mas também para ouvir outras perspectivas.

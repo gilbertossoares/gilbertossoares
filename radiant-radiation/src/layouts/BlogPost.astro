@@ -1,19 +1,56 @@
 ---
 import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import { BASE } from '../consts';
+import { readingTime } from '../reading-time';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = { post: CollectionEntry<'blog'> };
 
-const { title, description, pubDate, updatedDate, heroImage, lang } = Astro.props;
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, lang, tags } = post.data;
+
+const translation = post.data.translationKey
+	? (await getCollection('blog')).find(
+			(p) => p.data.translationKey === post.data.translationKey && p.id !== post.id,
+		)
+	: undefined;
+
+const translations = [post, translation]
+	.filter((p): p is CollectionEntry<'blog'> => p !== undefined)
+	.sort((a) => (a.data.lang === 'pt-BR' ? -1 : 1));
+
+const minutes = readingTime(post.body ?? '');
+
+const isPt = lang === 'pt-BR';
+const publishedLabel = isPt ? 'Publicado em' : 'Published on';
+const updatedLabel = isPt ? 'Atualizado em' : 'Updated on';
+const readingLabel = isPt ? `${minutes} min de leitura` : `${minutes} min read`;
+const switchTo = translation
+	? {
+			href: `${BASE}/blog/${translation.id}/`,
+			label: translation.data.lang === 'pt-BR' ? 'Ler em Português' : 'Read in English',
+		}
+	: undefined;
 ---
 
 <html lang={lang === 'pt-BR' ? 'pt-BR' : 'en'}>
 	<head>
-		<BaseHead title={title} description={description} image={heroImage} lang={lang} />
+		<BaseHead
+			title={title}
+			description={description}
+			image={heroImage}
+			lang={lang}
+			translations={translations.length > 1
+				? translations.map((p) => ({
+						hreflang: p.data.lang === 'pt-BR' ? 'pt-BR' : 'en',
+						href: `${BASE}/blog/${p.id}/`,
+					}))
+				: undefined}
+		/>
 
 		<style>
 			main {
@@ -69,10 +106,39 @@ const { title, description, pubDate, updatedDate, heroImage, lang } = Astro.prop
 				line-height: 1.6;
 			}
 
+			.lang-switch {
+				display: inline-block;
+				margin-bottom: 1em;
+				padding: 0.35rem 0.9rem;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 999px;
+				color: rgb(var(--gray-dark));
+				font-size: 0.85rem;
+				font-weight: 700;
+				text-decoration: none;
+			}
+
 			.date {
 				margin-bottom: 0.5em;
 				color: rgb(var(--gray));
 				font-size: 0.95rem;
+			}
+
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 0.5rem;
+				margin: 0 auto 0.5em auto;
+			}
+
+			.tags span {
+				padding: 0.2rem 0.55rem;
+				border-radius: 999px;
+				background: rgba(var(--gray-light), 60%);
+				color: rgb(var(--gray-dark));
+				font-size: 0.8rem;
+				font-weight: 700;
 			}
 
 			.last-updated-on {
@@ -130,13 +196,21 @@ const { title, description, pubDate, updatedDate, heroImage, lang } = Astro.prop
 
 				<div class="prose">
 					<header class="title" aria-labelledby="article-title">
+						{
+							switchTo && (
+								<a class="lang-switch" href={switchTo.href}>
+									{switchTo.label}
+								</a>
+							)
+						}
+
 						<div class="date">
-							Published on <FormattedDate date={pubDate} />
+							{publishedLabel} <FormattedDate date={pubDate} /> · {readingLabel}
 
 							{
 								updatedDate && (
 									<div class="last-updated-on">
-										Updated on <FormattedDate date={updatedDate} />
+										{updatedLabel} <FormattedDate date={updatedDate} />
 									</div>
 								)
 							}
@@ -149,6 +223,16 @@ const { title, description, pubDate, updatedDate, heroImage, lang } = Astro.prop
 								<p class="description">
 									{description}
 								</p>
+							)
+						}
+
+						{
+							tags?.length > 0 && (
+								<div class="tags">
+									{tags.map((tag) => (
+										<span>{tag}</span>
+									))}
+								</div>
 							)
 						}
 

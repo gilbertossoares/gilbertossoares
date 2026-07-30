@@ -7,16 +7,22 @@ import FallbackImage from "../assets/blog-placeholder-1.jpg";
 import { BASE, SITE_TITLE } from "../consts";
 import { Font } from "astro:assets";
 
+interface Translation {
+	hreflang: string;
+	href: string;
+}
+
 interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
 	lang?: 'en' | 'pt-BR';
+	translations?: Translation[];
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage, lang = 'en' } = Astro.props;
+const { title, description, image = FallbackImage, lang = 'en', translations } = Astro.props;
 
 const pageTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}`;
 const contentLanguage = lang === 'pt-BR' ? 'pt-BR' : 'en';
@@ -48,6 +54,14 @@ const ogLocale = lang === 'pt-BR' ? 'pt_BR' : 'en_US';
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Bilingual alternates -->
+{
+	translations?.map((t) => (
+		<link rel="alternate" hreflang={t.hreflang} href={new URL(t.href, Astro.site)} />
+	))
+}
+{translations && <link rel="alternate" hreflang="x-default" href={new URL(translations[0].href, Astro.site)} />}
 
 <!-- Primary Meta Tags -->
 <title>{pageTitle}</title>

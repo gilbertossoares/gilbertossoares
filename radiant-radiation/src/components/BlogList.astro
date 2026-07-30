@@ -1,0 +1,212 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from './BaseHead.astro';
+import Footer from './Footer.astro';
+import FormattedDate from './FormattedDate.astro';
+import Header from './Header.astro';
+import { BASE } from '../consts';
+import { readingTime } from '../reading-time';
+
+interface Props {
+	lang: 'pt-BR' | 'en';
+}
+
+const { lang } = Astro.props;
+const isPt = lang === 'pt-BR';
+
+const title = isPt ? 'Artigos' : 'Articles';
+const description = isPt
+	? 'Artigos técnicos sobre Inteligência Artificial, Cloud, Dados e Arquitetura de Soluções.'
+	: 'Technical articles about Artificial Intelligence, Cloud, Data and Solution Architecture.';
+
+const otherLang = isPt
+	? { href: `${BASE}/blog/en/`, label: 'Read in English' }
+	: { href: `${BASE}/blog/`, label: 'Ler em Português' };
+
+const posts = (await getCollection('blog'))
+	.filter((post) => !post.data.draft && post.data.lang === lang)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<BaseHead title={title} description={description} lang={lang} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section class="hero">
+				<p class="eyebrow">{isPt ? 'Escrita' : 'Writing'}</p>
+				<h1>{title}</h1>
+				<p>
+					{
+						isPt
+							? 'Notas técnicas, ensaios e explorações práticas sobre IA, cloud, dados, arquitetura e engenharia de software.'
+							: 'Technical notes, essays and practical explorations about AI, cloud, data, architecture and software engineering.'
+					}
+				</p>
+				<a class="lang-toggle" href={otherLang.href}>{otherLang.label}</a>
+			</section>
+
+			<section class="post-list">
+				{
+					posts.map((post) => (
+						<article class="post-card">
+							<a href={`${BASE}/blog/${post.id}/`}>
+								{post.data.heroImage && (
+									<Image
+										width={720}
+										height={360}
+										src={post.data.heroImage}
+										alt={`${post.data.title} cover image`}
+									/>
+								)}
+
+								<div class="post-content">
+									<div class="meta">
+										<FormattedDate date={post.data.pubDate} />
+										<span>•</span>
+										<span>{readingTime(post.body ?? '')} {isPt ? 'min de leitura' : 'min read'}</span>
+									</div>
+
+									<h2>{post.data.title}</h2>
+
+									<p>{post.data.description}</p>
+
+									{post.data.tags?.length > 0 && (
+										<div class="tags">
+											{post.data.tags.map((tag) => (
+												<span>{tag}</span>
+											))}
+										</div>
+									)}
+								</div>
+							</a>
+						</article>
+					))
+				}
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		margin-bottom: 2.5rem;
+	}
+
+	.eyebrow {
+		color: var(--accent);
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.hero p:last-child {
+		font-size: 1.15rem;
+		color: rgb(var(--gray));
+	}
+
+	.lang-toggle {
+		display: inline-block;
+		margin-top: 1.25rem;
+		padding: 0.5rem 1rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 999px;
+		color: rgb(var(--gray-dark));
+		font-weight: 700;
+		font-size: 0.9rem;
+		text-decoration: none;
+	}
+
+	.post-list {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.post-card {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 18px;
+		background: rgba(255, 255, 255, 0.78);
+		box-shadow: var(--box-shadow);
+		overflow: hidden;
+	}
+
+	.post-card a {
+		display: grid;
+		grid-template-columns: 240px 1fr;
+		gap: 1.25rem;
+		color: rgb(var(--gray-dark));
+		text-decoration: none;
+	}
+
+	.post-card img {
+		width: 100%;
+		height: 100%;
+		min-height: 180px;
+		object-fit: cover;
+		border-radius: 0;
+	}
+
+	.post-content {
+		padding: 1.25rem 1.25rem 1.25rem 0;
+	}
+
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		align-items: center;
+		margin-bottom: 0.5rem;
+		color: rgb(var(--gray));
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.post-card h2 {
+		margin: 0 0 0.75rem;
+		font-size: 1.6rem;
+	}
+
+	.post-card p {
+		margin-bottom: 1rem;
+		line-height: 1.6;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.tags span {
+		padding: 0.2rem 0.55rem;
+		border-radius: 999px;
+		background: rgba(var(--gray-light), 60%);
+		color: rgb(var(--gray-dark));
+		font-size: 0.8rem;
+		font-weight: 700;
+	}
+
+	@media (max-width: 720px) {
+		.post-card a {
+			grid-template-columns: 1fr;
+		}
+
+		.post-content {
+			padding: 1.25rem;
+		}
+
+		.post-card img {
+			min-height: auto;
+		}
+	}
+</style>

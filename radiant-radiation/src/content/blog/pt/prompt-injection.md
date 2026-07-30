@@ -4,6 +4,7 @@ description: 'O que é e como prevenir o prompt injection'
 pubDate: 'May 27 2026'
 heroImage: '../../../../public/images/prompt-injection.png'
 lang: "pt-BR"
+translationKey: "prompt-injection"
 ---
 
 Em maio de 2026, três episódios colocaram um termo até então restrito a fóruns de segurança e de inteligência artificial no noticiário jurídico brasileiro.

@@ -4,6 +4,7 @@ description: 'What Context Engineering is and how it can be applied in real-worl
 pubDate: 'Aug 01 2025'
 heroImage: '../../../../public/images/1754066678093.jpeg'
 lang: "en"
+translationKey: "daily-context-engineering"
 ---
 
 Over the past two years, I've been involved in several **Generative AI** projects with customers, and I'd like to start sharing some of those practical experiences here—not only to share what I've learned, but also to hear how others are approaching similar challenges.

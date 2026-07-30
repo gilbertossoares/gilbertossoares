@@ -3,6 +3,7 @@ title: 'Prompt Injection: the OWASP Top 10 LLM vulnerability has reached the hea
 description: 'What is e how to prevent prompt injection'
 pubDate: 'May 27 2026'
 heroImage: '../../../../public/images/prompt-injection-en.png'
+translationKey: "prompt-injection"
 ---
 
 In May 2026, three incidents brought a term previously restricted to security and artificial intelligence forums into the Brazilian legal news cycle.

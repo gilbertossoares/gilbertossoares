@@ -4,6 +4,7 @@ description: 'Qual IA eu devo escolher?'
 pubDate: 'Aug 25 2025'
 heroImage: '../../../../public/images/1756124357783.png'
 lang: "pt-BR"
+translationKey: "choose-genai"
 ---
 
 Já postei anteriormente sobre **engenharia de contexto** e como esse alicerce influencia o desenvolvimento de projetos de IA. Hoje quero falar de outro ponto que tem um impacto enorme em qualquer iniciativa com IA generativa: **qual modelo escolher?**

@@ -4,6 +4,7 @@ description: 'Como melhorar a Engenharia de Contexto e obter respostas melhores.
 pubDate: 'Aug 08 2025'
 heroImage: '../../../../public/images/1754436128990.jpeg'
 lang: "pt-BR"
+translationKey: "improve-context-engineering"
 ---
 
 Continuando a falar sobre **Context Engineering** e como podemos fornecer dados de qualidade para nossos projetos de **GenAI**.

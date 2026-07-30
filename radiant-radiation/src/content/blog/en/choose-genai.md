@@ -4,6 +4,7 @@ description: 'How do I choose the right AI model?'
 pubDate: 'Aug 25 2025'
 heroImage: '../../../../public/images/1756124357783.png'
 lang: "en"
+translationKey: "choose-genai"
 ---
 
 I've previously written about **context engineering** and how it serves as the foundation for building successful AI applications. Today, I want to discuss another critical aspect of any generative AI initiative: **choosing the right model**.

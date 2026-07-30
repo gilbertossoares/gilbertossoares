@@ -4,6 +4,7 @@ description: 'How better context leads to better LLM responses.'
 pubDate: 'Aug 08 2025'
 heroImage: '../../../../public/images/1754436128990.jpeg'
 lang: "en"
+translationKey: "improve-context-engineering"
 ---
 
 Continuing the discussion on **Context Engineering**, let's talk about one of its most important building blocks: providing high-quality context for your **Generative AI** applications.
