@@ -2,7 +2,9 @@
 
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import { defineConfig, fontProviders } from 'astro/config';
+import rehypeHeadingAnchors from './src/rehype-heading-anchors.mjs';
 
 
 
@@ -11,6 +13,9 @@ export default defineConfig({
 	site: 'https://gilbertossoares.github.io',
 	base: '/gilbertossoares',
 	integrations: [mdx(), sitemap()],
+	markdown: {
+		processor: unified({ rehypePlugins: [rehypeHeadingAnchors] }),
+	},
 	fonts: [
 		{
 			provider: fontProviders.local(),

@@ -18,7 +18,7 @@ Os três casos têm o mesmo nome técnico: **prompt injection**. Não são curio
 
 Se sua aplicação processa texto vindo de fora — petições, e-mails, currículos, tickets, documentos de clientes, páginas da web — este artigo explica como o ataque funciona, por que é difícil de prevenir, e como o Microsoft Foundry implementa defesa em camadas para mitigá-lo.
 
-**O que é prompt injection**
+## O que é prompt injection
 
 Prompt injection é qualquer técnica em que um atacante consegue fazer com que uma LLM execute instruções que não foram dadas pelo desenvolvedor da aplicação.
 
@@ -26,7 +26,7 @@ A vulnerabilidade existe porque LLMs não fazem distinção rígida entre instru
 
 É a mesma classe de problema que SQL injection nos anos 2000 — confusão entre código e dado — só que muito mais difícil de resolver, porque não dá pra "escapar" um prompt do jeito que se escapa uma string SQL.
 
-**Direto vs indireto**
+## Direto vs indireto
 
 A literatura distingue duas modalidades.
 
@@ -36,7 +36,7 @@ A literatura distingue duas modalidades.
 
 O indireto é o mais perigoso por dois motivos: (1) o usuário que dispara o ataque não é o atacante, então não há intenção maliciosa a detectar no momento da execução; (2) à medida que aplicações com LLM viram agentes, capazes de ler e-mails, navegar na web, executar ações em sistemas, a superfície de ataque multiplica. Um agente que lê e-mails é um agente que pode ser instruído por qualquer pessoa que saiba seu endereço.
 
-**Por que isso importa agora**
+## Por que isso importa agora
 
 Há três razões.
 
@@ -46,7 +46,7 @@ Segundo, **integrações cada vez mais amplas**. À medida que o "vibe coding" s
 
 Terceiro, **acessibilidade do ataque**. Os casos do Pará, de SP e do STJ deixam isso claro: não foi necessário conhecimento técnico avançado. Bastou saber colocar texto em fonte branca sobre fundo branco. Quando o vetor é trivial, o volume de tentativas multiplica rápido.
 
-**A regra fundamental: defesa em camadas**
+## A regra fundamental: defesa em camadas
 
 Um princípio se aplica a qualquer LLM em qualquer cloud, antes de qualquer Azure: **não existe defesa única contra prompt injection**.
 
@@ -64,13 +64,13 @@ As categorias de defesa relevantes:
 
 O Microsoft Foundry implementa recursos nativos em várias dessas camadas.
 
-**Como o Microsoft Foundry ataca o problema**
+## Como o Microsoft Foundry ataca o problema
 
 A peça central é o **Azure AI Content Safety**, serviço da Microsoft que opera como camada de moderação entre a aplicação e o modelo. Ele é exposto no Foundry de duas formas: como filtro de conteúdo configurado no deploy do modelo (a opção que aparece como **Content Filter**, frequentemente passa despercebida e por padrão usa o perfil DefaultV2), e como API independente que pode ser chamada por qualquer aplicação.
 
 A seguir, os recursos mais relevantes para mitigar prompt injection. O Content Safety também faz moderação de imagens e conteúdo multimodal, fora do escopo aqui.
 
-**Prompt Shields**
+### Prompt Shields
 
 Esta é a defesa mais diretamente endereçada ao OWASP LLM01. O Prompt Shields é uma API unificada do Content Safety que tenta detectar duas categorias de ataque:
 
@@ -79,7 +79,7 @@ Esta é a defesa mais diretamente endereçada ao OWASP LLM01. O Prompt Shields �
 
 Quando habilitado no filtro de conteúdo do deploy, o Prompt Shields analisa prompts e documentos antes deles chegarem ao modelo. Se detecta padrão de ataque, bloqueia.
 
-**Harm categories - as quatro categorias de moderação**
+### Harm categories - as quatro categorias de moderação
 
 Além do Prompt Shields, o Content Safety faz moderação de conteúdo em quatro categorias com a nomenclatura oficial:
 
@@ -94,23 +94,23 @@ Cada categoria tem quatro níveis de severidade: **Safe**, **Low**, **Medium** e
 
 Em aplicações médicas ou jurídicas, esses filtros frequentemente precisam ser ajustados, descrições de lesões em laudos periciais ou de violência em processos criminais caem naturalmente nas categorias Violence ou Self-Harm. O Foundry permite customizar cada categoria de forma independente, o que evita o cenário comum de "o filtro está atrapalhando, vamos desligar tudo".
 
-**Groundedness Detection**
+### Groundedness Detection
 
 Esse recurso determina se a resposta do modelo está ancorada nas fontes que você forneceu, ou se ele "alucinou" ou foi manipulado a sair do escopo. Em arquiteturas RAG, é uma defesa importante: se um documento recuperado contém prompt injection que faz o modelo responder algo não relacionado à pergunta, o Groundedness Detection consegue sinalizar.
 
-**Protected Material Detection**
+### Protected Material Detection
 
 Detecta se o output contém material protegido: letras de música, artigos conhecidos, código de repositórios públicos. Não é diretamente uma defesa contra prompt injection, mas é relevante porque um ataque pode tentar forçar o modelo a reproduzir conteúdo licenciado. A detecção funciona para texto e código separadamente.
 
-**Blocklists customizadas**
+### Blocklists customizadas
 
 Listas determinísticas de termos que devem ser bloqueados em input ou output. Útil para nomes de produtos internos, identificadores de cliente, padrões específicos do seu domínio. Limitação importante: blocklist é match literal, não pega paráfrase, sinônimo, ou variação criativa. Combina bem com Prompt Shields (que é probabilístico), não substitui.
 
-**Custom Categories e Safety System Message**
+### Custom Categories e Safety System Message
 
 Para casos onde as quatro categorias padrão não cobrem seu risco específico (ex: você precisa filtrar conteúdo relacionado a um competidor, ou a um tópico sensível do seu negócio), o Content Safety permite definir categorias customizadas. Já o Safety System Message dá um caminho estruturado para incluir, no system prompt, instruções de segurança alinhadas com as recomendações da Microsoft, uma camada extra de defesa, ainda que sozinha não basta.
 
-**Quais são os pontos de atenção?**
+## Quais são os pontos de atenção?
 
 **Content Safety não conhece o contexto do seu negócio.** Ele não sabe que "transferir saldo para conta externa" é uma operação que precisa de aprovação no seu sistema. Esse tipo de validação tem que viver na sua camada de aplicação, não na LLM.
 
@@ -122,7 +122,7 @@ Para casos onde as quatro categorias padrão não cobrem seu risco específico (
 
 **Defesa em camadas implica custo.** Cada chamada extra ao Content Safety, cada validação determinística, cada human-in-the-loop adiciona latência e custo. Vale a pena para aplicações sensíveis; é exagero para um chatbot interno de FAQ.
 
-**Checklist acionável**
+## Checklist acionável
 
 Se você roda LLM em produção no Azure, revise:
 
@@ -135,13 +135,13 @@ Se você roda LLM em produção no Azure, revise:
 - [ ] Você tem visibilidade do que o Content Safety está bloqueando? Logs estruturados, dashboards, alertas?
 - [ ] Em arquitetura RAG, você usa Groundedness Detection para identificar respostas fora do escopo das fontes?
 
-**Fechamento**
+## Fechamento
 
 Os casos de Parauapebas, São Paulo e do STJ provavelmente são só o começo. Quando o ataque pode ser executado com fonte branca em fundo branco no Word, o limite não é técnico, é quanto tempo cada equipe vai levar pra implementar as defesas.
 
 Prompt injection é estrutural ao funcionamento de LLMs: não se elimina, se mitiga em camadas. O Microsoft Foundry entrega várias delas prontas, mas só funcionam se forem configuradas conscientemente, e se você souber o que elas não cobrem.
 
-**Referências e leitura adicional:**
+## Referências e leitura adicional
 
 - [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - [Documentação do Azure AI Content Safety no Microsoft Foundry](https://learn.microsoft.com/en-us/azure/foundry-classic/ai-services/content-safety-overview)

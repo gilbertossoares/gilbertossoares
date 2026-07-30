@@ -17,7 +17,7 @@ All three cases share the same technical name: **prompt injection**. They are no
 
 If your application processes externally sourced text — petitions, emails, résumés, tickets, client documents, web pages — this article explains how the attack works, why it is difficult to prevent, and how Microsoft Foundry implements layered defenses to mitigate it.
 
-**What is prompt injection**
+## What is prompt injection
 
 Prompt injection is any technique in which an attacker manages to make an LLM execute instructions that were not provided by the application developer.
 
@@ -25,7 +25,7 @@ The vulnerability exists because LLMs do not make a strict distinction between *
 
 It is the same class of problem as SQL injection in the 2000s — confusion between code and data — but much harder to solve, because you cannot simply “escape” a prompt the same way you escape an SQL string.
 
-**Direct vs indirect**
+## Direct vs indirect
 
 The literature distinguishes two modalities.
 
@@ -35,7 +35,7 @@ The literature distinguishes two modalities.
 
 Indirect injection is the most dangerous for two reasons: (1) the user triggering the attack is not the attacker, so there is no malicious intent to detect at execution time; (2) as LLM applications become agents, capable of reading emails, browsing the web, and executing actions in systems, the attack surface multiplies. An agent that reads emails is an agent that can be instructed by anyone who knows its address.
 
-**Why this matters now**
+## Why this matters now
 
 There are three reasons.
 
@@ -45,7 +45,7 @@ Second, **increasingly broad integrations**. As “vibe coding” spreads, with 
 
 Third, **accessibility of the attack**. The Pará, São Paulo, and STJ cases make this clear: no advanced technical knowledge was required. It was enough to know how to place white text on a white background. When the vector is trivial, the number of attempts multiplies quickly.
 
-**The fundamental rule: layered defense**
+## The fundamental rule: layered defense
 
 One principle applies to any LLM on any cloud, before any Azure consideration: there is **no single defense against prompt injection**.
 
@@ -63,13 +63,13 @@ The relevant defense categories:
 
 Microsoft Foundry implements native capabilities across several of these layers.
 
-**How Microsoft Foundry approaches the problem**
+## How Microsoft Foundry approaches the problem
 
 The central component is **Azure AI Content Safety**, Microsoft’s service operating as a moderation layer between the application and the model. It is exposed in Foundry in two ways: as a configurable content filter in the model deployment (the option shown as **Content Filter**, often overlooked and by default using the DefaultV2 profile), and as an independent API callable by any application.
 
 Below are the most relevant capabilities for mitigating prompt injection. Content Safety also performs image and multimodal content moderation, which is outside the scope here.
 
-**Prompt Shields**
+### Prompt Shields
 
 This is the defense most directly addressing OWASP LLM01. Prompt Shields is a unified Content Safety API attempting to detect two categories of attacks:
 
@@ -78,7 +78,7 @@ This is the defense most directly addressing OWASP LLM01. Prompt Shields is a un
 
 When enabled in the deployment content filter, Prompt Shields analyzes prompts and documents before they reach the model. If it detects an attack pattern, it blocks it.
 
-**Harm categories — the four moderation categories**
+### Harm categories — the four moderation categories
 
 In addition to Prompt Shields, Content Safety moderates content across four categories using the official terminology:
 
@@ -93,23 +93,23 @@ Each category has four severity levels: **Safe**, **Low**, **Medium**, and **Hig
 
 In medical or legal applications, these filters often need adjustment, descriptions of injuries in forensic reports or violence in criminal proceedings naturally fall into the Violence or Self-Harm categories. Foundry allows customization of each category independently, avoiding the common scenario of “the filter is getting in the way, let’s disable everything.”
 
-**Groundedness Detection**
+### Groundedness Detection
 
 This capability determines whether the model’s response is grounded in the sources you provided, or whether it “hallucinated” or was manipulated out of scope. In RAG architectures, it is an important defense: if a retrieved document contains prompt injection causing the model to answer something unrelated to the question, Groundedness Detection can flag it.
 
-**Protected Material Detection**
+### Protected Material Detection
 
 Detects whether the output contains protected material: song lyrics, known articles, code from public repositories. It is not directly a defense against prompt injection, but it matters because an attack may attempt to force the model to reproduce licensed content. Detection works separately for text and code.
 
-**Custom blocklists**
+### Custom blocklists
 
 Deterministic lists of terms that should be blocked in input or output. Useful for internal product names, client identifiers, or domain-specific patterns. Important limitation: a blocklist is literal matching, it does not catch paraphrases, synonyms, or creative variations. It works well combined with Prompt Shields (which is probabilistic), but does not replace it.
 
-**Custom Categories and Safety System Message**
+### Custom Categories and Safety System Message
 
 For cases where the four default categories do not cover your specific risk (e.g., filtering content related to a competitor or a sensitive business topic), Content Safety allows the definition of custom categories. Meanwhile, Safety System Message provides a structured way to include, in the system prompt, security instructions aligned with Microsoft’s recommendations, an additional defense layer, although insufficient by itself.
 
-**What are the key points of attention?**
+## What are the key points of attention?
 
 **Content Safety does not understand your business context.** It does not know that “transfer balance to external account” is an operation requiring approval in your system. That type of validation must live in your application layer, not in the LLM.
 
@@ -121,7 +121,7 @@ For cases where the four default categories do not cover your specific risk (e.g
 
 **Layered defense implies cost.** Every extra Content Safety call, every deterministic validation, every human-in-the-loop adds latency and cost. It is worth it for sensitive applications; it is excessive for an internal FAQ chatbot.
 
-**Actionable checklist**
+## Actionable checklist
 
 If you run LLMs in production on Azure, review:
 - [ ] Is the Content Filter enabled in the model deployment? Which profile — DefaultV2 or customized?
@@ -133,13 +133,13 @@ If you run LLMs in production on Azure, review:
 - [ ] Do you have visibility into what Content Safety is blocking? Structured logs, dashboards, alerts?
 - [ ] In RAG architectures, do you use Groundedness Detection to identify responses outside the scope of the sources?
 
-**Closing**
+## Closing
 
 The Parauapebas, São Paulo, and STJ cases are probably only the beginning. When an attack can be executed using white font on a white background in Word, the limit is not technical, it is how long each team takes to implement defenses.
 
 Prompt injection is structural to how LLMs work: it cannot be eliminated, only mitigated in layers. Microsoft Foundry delivers several of these layers out of the box, but they only work if consciously configured, and if you understand what they do not cover.
 
-**References and further reading:**
+## References and further reading
 
 - [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - [Azure AI Content Safety documentation in Microsoft Foundry](https://learn.microsoft.com/en-us/azure/foundry-classic/ai-services/content-safety-overview)
