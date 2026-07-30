@@ -1,20 +1,20 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { BASE } from '../consts';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { BASE } from '../../consts';
 
-const title = 'Projects';
-const description = 'Public GitHub projects by Gilberto Santos.';
+const title = 'Projetos';
+const description = 'Projetos públicos no GitHub de Gilberto Santos.';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<BaseHead
 			title={title}
 			description={description}
-			lang="en"
+			lang="pt-BR"
 			translations={[
 				{ hreflang: 'en', href: `${BASE}/projects/` },
 				{ hreflang: 'pt-BR', href: `${BASE}/projects/pt/` },
@@ -27,30 +27,30 @@ const description = 'Public GitHub projects by Gilberto Santos.';
 
 		<main>
 			<section class="hero">
-				<p class="eyebrow">GitHub • Experiments • Code</p>
-				<h1>Projects</h1>
+				<p class="eyebrow">GitHub • Experimentos • Código</p>
+				<h1>Projetos</h1>
 				<p>
-					Public repositories, workshops and technical experiments that I maintain on GitHub.
+					Repositórios públicos, workshops e experimentos técnicos que mantenho no GitHub.
 				</p>
 
-				<a class="lang-toggle" href={`${BASE}/projects/pt/`}>Ler em Português</a>
+				<a class="lang-toggle" href={`${BASE}/projects/`}>Read in English</a>
 			</section>
 
 			<section class="project-list">
 				<article class="project-card">
 					<div>
-						<p class="status">Public project</p>
+						<p class="status">Projeto público</p>
 						<h2>Anonimizer</h2>
 						<p>
-							A document anonymization application built with Azure AI services, focused on
-							detecting and removing personally identifiable information (PII). It includes
-							document upload, processing and a web interface.
+							Uma aplicação de anonimização de documentos construída com serviços do Azure AI,
+							focada em detectar e remover informações de identificação pessoal (PII). Inclui
+							upload de documentos, processamento e uma interface web.
 						</p>
 						<p class="tags">Azure AI • PII • Python • Flask • Documents</p>
 					</div>
 
 					<a href="https://github.com/gilbertossoares/anonimizer" target="_blank" rel="noopener noreferrer">
-						View on GitHub →
+						Ver no GitHub →
 					</a>
 				</article>
 
@@ -59,15 +59,15 @@ const description = 'Public GitHub projects by Gilberto Santos.';
 						<p class="status">Workshop</p>
 						<h2>Azure AI Foundry Workshop</h2>
 						<p>
-							A hands-on workshop with labs and code examples for exploring Azure AI Foundry,
-							Azure OpenAI, AI services, prompt engineering, Semantic Kernel, AutoGen and RAG
-							with Azure AI Search.
+							Um workshop prático com laboratórios e exemplos de código para explorar o Azure
+							AI Foundry, Azure OpenAI, serviços de IA, engenharia de prompt, Semantic Kernel,
+							AutoGen e RAG com Azure AI Search.
 						</p>
 						<p class="tags">Azure AI Foundry • Azure OpenAI • RAG • Agents • Workshop</p>
 					</div>
 
 					<a href="https://github.com/gilbertossoares/ai-foundry-workshop" target="_blank" rel="noopener noreferrer">
-						View on GitHub →
+						Ver no GitHub →
 					</a>
 				</article>
 
@@ -76,15 +76,15 @@ const description = 'Public GitHub projects by Gilberto Santos.';
 						<p class="status">Benchmark</p>
 						<h2>Vector Azure Benchmark</h2>
 						<p>
-							A benchmark suite for comparing vector search performance across platforms such as
-							Azure, Databricks and Microsoft Fabric, measuring latency, throughput, consistency
-							and metrics such as P95 and P99.
+							Um conjunto de benchmarks para comparar performance de busca vetorial entre
+							plataformas como Azure, Databricks e Microsoft Fabric, medindo latência,
+							throughput, consistência e métricas como P95 e P99.
 						</p>
 						<p class="tags">Vector Search • Azure • Databricks • Microsoft Fabric • Benchmark</p>
 					</div>
 
 					<a href="https://github.com/gilbertossoares/demo-vector-benchmark" target="_blank" rel="noopener noreferrer">
-						View on GitHub →
+						Ver no GitHub →
 					</a>
 				</article>
 			</section>

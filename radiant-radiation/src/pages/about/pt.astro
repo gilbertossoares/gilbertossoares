@@ -1,0 +1,141 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { BASE } from '../../consts';
+
+const title = 'Sobre';
+const description =
+	'Sobre Gilberto Santos: Inteligência Artificial, Arquitetura de Soluções, Cloud, Dados e projetos técnicos.';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			lang="pt-BR"
+			translations={[
+				{ hreflang: 'en', href: `${BASE}/about/` },
+				{ hreflang: 'pt-BR', href: `${BASE}/about/pt/` },
+			]}
+		/>
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section class="hero">
+				<p class="eyebrow">Sobre</p>
+
+				<h1>Gilberto Santos</h1>
+
+				<p class="lead">
+					Arquiteto de Soluções Cloud, entusiasta de IA e criador de projetos técnicos.
+				</p>
+
+				<a class="lang-toggle" href={`${BASE}/about/`}>Read in English</a>
+			</section>
+
+			<section>
+				<p>
+					Sou um profissional de tecnologia focado em Inteligência Artificial, dados,
+					arquitetura de soluções e computação em nuvem. Meu trabalho é centrado no design
+					de soluções práticas que conectam desafios de negócio às tecnologias modernas de
+					IA e cloud.
+				</p>
+
+				<p>
+					Este site é onde compartilho artigos, projetos técnicos, experimentos e
+					aprendizado contínuo. Meu objetivo é documentar minha jornada e publicar
+					conteúdo em um formato que permita discussões mais profundas do que as redes
+					sociais tradicionais.
+				</p>
+			</section>
+
+			<section>
+				<h2>Áreas de Interesse</h2>
+
+				<ul class="topics">
+					<li>Inteligência Artificial e LLMs</li>
+					<li>Arquitetura de Soluções Cloud</li>
+					<li>Azure, Engenharia de Dados e Machine Learning</li>
+					<li>RAG, Agentes de IA e aplicações de IA Generativa</li>
+					<li>Computação Quântica</li>
+					<li>Projetos técnicos, aplicações web e engenharia de software</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Projetos</h2>
+
+				<p>
+					Meu trabalho público está disponível no GitHub e inclui projetos relacionados
+					a anonimização de documentos, Azure AI, benchmark de busca vetorial, workshops,
+					experimentos técnicos e protótipos de software.
+				</p>
+
+				<p>
+					Também uso este espaço para organizar ideias da minha pós-graduação, palestras,
+					escrita técnica e aprendizado contínuo em Inteligência Artificial, computação em
+					nuvem e tecnologias emergentes.
+				</p>
+			</section>
+
+			<section>
+				<h2>Onde me encontrar</h2>
+
+				<ul>
+					<li>
+						<a
+							href="https://github.com/gilbertossoares"
+							target="_blank"
+							rel="noopener noreferrer">
+							GitHub
+						</a>
+					</li>
+
+					<li>
+						<a
+							href="https://www.linkedin.com/in/gilbertossoares"
+							target="_blank"
+							rel="noopener noreferrer">
+							LinkedIn
+						</a>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		margin-bottom: 2rem;
+	}
+
+	.eyebrow {
+		color: var(--accent);
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.lead {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: rgb(var(--black));
+	}
+
+	.topics {
+		display: grid;
+		gap: 0.5rem;
+		padding-left: 1.2rem;
+	}
+</style>

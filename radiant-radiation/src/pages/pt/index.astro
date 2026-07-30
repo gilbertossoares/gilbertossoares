@@ -1,19 +1,19 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { BASE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { BASE, SITE_DESCRIPTION_PT } from '../../consts';
 
-const title = 'Gilberto Santos — AI, Solution Architecture and Cloud';
+const title = 'Gilberto Santos — IA, Arquitetura de Soluções e Cloud';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<BaseHead
 			title={title}
-			description={SITE_DESCRIPTION}
-			lang="en"
+			description={SITE_DESCRIPTION_PT}
+			lang="pt-BR"
 			translations={[
 				{ hreflang: 'en', href: `${BASE}/` },
 				{ hreflang: 'pt-BR', href: `${BASE}/pt/` },
@@ -26,54 +26,54 @@ const title = 'Gilberto Santos — AI, Solution Architecture and Cloud';
 
 		<main>
 			<section class="hero">
-				<p class="eyebrow">AI • Cloud • Data • Research</p>
+				<p class="eyebrow">IA • Cloud • Dados • Pesquisa</p>
 
 				<h1>Gilberto Santos</h1>
 
 				<p class="lead">
-					I write about artificial intelligence, solution architecture, data, cloud,
-					digital products and technical experiments.
+					Escrevo sobre inteligência artificial, arquitetura de soluções, dados, cloud,
+					produtos digitais e experimentos técnicos.
 				</p>
 
 				<p>
-					This space brings together articles, projects, research notes, lessons learned
-					and work-in-progress ideas. It is where I publish with more depth than on social media.
+					Este espaço reúne artigos, projetos, notas de pesquisa, aprendizados e ideias
+					em desenvolvimento. É onde publico com mais profundidade do que nas redes sociais.
 				</p>
 
 				<div class="actions">
-					<a class="button primary" href={`${BASE}/blog/`}>Read articles</a>
-					<a class="button secondary" href={`${BASE}/about/`}>About me</a>
+					<a class="button primary" href={`${BASE}/blog/pt/`}>Ler artigos</a>
+					<a class="button secondary" href={`${BASE}/about/pt/`}>Sobre mim</a>
 				</div>
 
-				<a class="lang-toggle" href={`${BASE}/pt/`}>Ler em Português</a>
+				<a class="lang-toggle" href={`${BASE}/`}>Read in English</a>
 			</section>
 
 			<section class="cards">
-				<a class="card" href={`${BASE}/blog/`}>
-					<span>Articles</span>
-					<p>Technical writing about AI, LLMs, Azure, data, architecture and engineering.</p>
+				<a class="card" href={`${BASE}/blog/pt/`}>
+					<span>Artigos</span>
+					<p>Conteúdo técnico sobre IA, LLMs, Azure, dados, arquitetura e engenharia.</p>
 				</a>
 
-				<a class="card" href={`${BASE}/projects/`}>
-					<span>Projects</span>
-					<p>Experiments, prototypes, applications and ideas I am building or exploring.</p>
+				<a class="card" href={`${BASE}/projects/pt/`}>
+					<span>Projetos</span>
+					<p>Experimentos, protótipos, aplicações e ideias que estou construindo ou explorando.</p>
 				</a>
 
-				<a class="card" href={`${BASE}/about/`}>
-					<span>About</span>
-					<p>My background, technical interests, talks, projects and links.</p>
+				<a class="card" href={`${BASE}/about/pt/`}>
+					<span>Sobre</span>
+					<p>Minha trajetória, interesses técnicos, palestras, projetos e links.</p>
 				</a>
 			</section>
 
 			<section>
-				<h2>Main topics</h2>
+				<h2>Principais temas</h2>
 
 				<ul class="topics">
-					<li>Artificial Intelligence and LLMs</li>
-					<li>Azure, data and solution architecture</li>
-					<li>Agents, RAG and practical AI applications</li>
-					<li>Quantum computing and applied learning</li>
-					<li>Personal projects, web games and technical experiments</li>
+					<li>Inteligência Artificial e LLMs</li>
+					<li>Azure, dados e arquitetura de soluções</li>
+					<li>Agentes, RAG e aplicações práticas de IA</li>
+					<li>Computação quântica e aprendizado aplicado</li>
+					<li>Projetos pessoais, jogos web e experimentos técnicos</li>
 				</ul>
 			</section>
 		</main>

@@ -199,6 +199,18 @@ hr {
 	}
 }
 
+.lang-toggle {
+	display: inline-block;
+	margin-top: 1.25rem;
+	padding: 0.5rem 1rem;
+	border: 1px solid rgb(var(--gray-light));
+	border-radius: 999px;
+	color: rgb(var(--gray-dark));
+	font-weight: 700;
+	font-size: 0.9rem;
+	text-decoration: none;
+}
+
 .sr-only {
 	border: 0;
 	padding: 0;

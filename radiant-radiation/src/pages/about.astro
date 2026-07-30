@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { BASE } from '../consts';
 
 const title = 'About';
 const description =
@@ -11,7 +12,15 @@ const description =
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead
+			title={title}
+			description={description}
+			lang="en"
+			translations={[
+				{ hreflang: 'en', href: `${BASE}/about/` },
+				{ hreflang: 'pt-BR', href: `${BASE}/about/pt/` },
+			]}
+		/>
 	</head>
 
 	<body>
@@ -26,6 +35,8 @@ const description =
 				<p class="lead">
 					Cloud Solution Architect, AI enthusiast and builder of technical projects.
 				</p>
+
+				<a class="lang-toggle" href={`${BASE}/about/pt/`}>Ler em Português</a>
 			</section>
 
 			<section>
