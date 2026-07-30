@@ -1,7 +1,7 @@
 ---
 title: 'Prompt Injection: the OWASP Top 10 LLM vulnerability has reached the headlines'
 description: 'What is e how to prevent prompt injection'
-pubDate: 'May 27 2022'
+pubDate: 'May 27 2026'
 heroImage: '../../../../public/images/prompt-injection-en.png'
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 'Prompt Injection: a vulnerabilidade número 1 do OWASP Top 10 LLM chegou aos noticiários'
 description: 'O que é e como previnir o prompt injection'
-pubDate: 'May 27 2022'
+pubDate: 'May 27 2026'
 heroImage: '../../../../public/images/prompt-injection.png'
 lang: "pt-BR"
 ---
