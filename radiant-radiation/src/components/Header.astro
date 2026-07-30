@@ -1,17 +1,17 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { BASE, SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<span class="site-title"><a href={`${BASE}/`}>{SITE_TITLE}</a></span>
 
 		<div class="internal-links">
-			<HeaderLink href="/gilbertossoares/">Home</HeaderLink>
-			<HeaderLink href="/gilbertossoares/blog">Articles</HeaderLink>
-			<HeaderLink href="/gilbertossoares/projects">Projects</HeaderLink>
-			<HeaderLink href="/gilbertossoares/about">About</HeaderLink>
+			<HeaderLink href={`${BASE}/`}>Home</HeaderLink>
+			<HeaderLink href={`${BASE}/blog`}>Articles</HeaderLink>
+			<HeaderLink href={`${BASE}/projects`}>Projects</HeaderLink>
+			<HeaderLink href={`${BASE}/about`}>About</HeaderLink>
 		</div>
 
 		<div class="social-links">
@@ -29,13 +29,13 @@ import HeaderLink from './HeaderLink.astro';
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 	}
 
-	h2 {
+	.site-title {
 		margin: 0;
 		font-size: 1em;
 	}
 
-	h2 a,
-	h2 a.active {
+	.site-title a,
+	.site-title a.active {
 		text-decoration: none;
 	}
 

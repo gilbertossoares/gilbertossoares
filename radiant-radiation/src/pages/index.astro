@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { BASE, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <!doctype html>
@@ -31,23 +31,23 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				</p>
 
 				<div class="actions">
-					<a class="button primary" href="/gilbertossoares/blog/">Read articles</a>
-					<a class="button secondary" href="/gilbertossoares/about/">About me</a>
+					<a class="button primary" href={`${BASE}/blog/`}>Read articles</a>
+					<a class="button secondary" href={`${BASE}/about/`}>About me</a>
 				</div>
 			</section>
 
 			<section class="cards">
-				<a class="card" href="/gilbertossoares/blog/">
+				<a class="card" href={`${BASE}/blog/`}>
 					<span>Articles</span>
 					<p>Technical writing about AI, LLMs, Azure, data, architecture and engineering.</p>
 				</a>
 
-				<a class="card" href="/gilbertossoares/projects/">
+				<a class="card" href={`${BASE}/projects/`}>
 					<span>Projects</span>
 					<p>Experiments, prototypes, applications and ideas I am building or exploring.</p>
 				</a>
 
-				<a class="card" href="/gilbertossoares/about/">
+				<a class="card" href={`${BASE}/about/`}>
 					<span>About</span>
 					<p>My background, technical interests, talks, projects and links.</p>
 				</a>
