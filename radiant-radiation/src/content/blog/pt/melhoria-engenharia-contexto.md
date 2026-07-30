@@ -2,7 +2,7 @@
 title: 'Qualidade para Engenharia de Contexto'
 description: 'Como melhorar a Engenharia de Contexto e obter respostas melhores.'
 pubDate: 'Aug 08 2025'
-heroImage: '../../../../public/images/1756124357783.png'
+heroImage: '../../../../public/images/1754436128990.jpeg'
 lang: "pt-BR"
 ---
 

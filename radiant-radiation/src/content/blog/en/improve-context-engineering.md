@@ -2,7 +2,7 @@
 title: 'Context Engineering Starts with Data Quality'
 description: 'How better context leads to better LLM responses.'
 pubDate: 'Aug 08 2025'
-heroImage: '../../../../public/images/1756124357783.png'
+heroImage: '../../../../public/images/1754436128990.jpeg'
 lang: "en"
 ---
 
