@@ -11,7 +11,7 @@ De acordo com grandes estudos do [Gartner](https://www.gartner.com/en/newsroom/p
 
 Escrevo este artigo em 2026. No momento atual, temos uma gama enorme de ferramentas que usam IA para resolver problemas dos mais simples aos mais complexos. A IA, de forma geral, se popularizou através da Inteligência Artificial Generativa. Em 2020, já era popular, para o público especializado, usar Redes Generativas Adversariais para replicar estilos de imagens. As LLMs começaram a evoluir e veio o ChatGPT. A partir desse ponto na história, iniciou-se o grande boom. IA Generativa se tornou praticamente sinônimo de usar IA e, a partir daí, todo pitch de startup adotou IA como parte do vocabulário.
 
-[Discurso para uso de IA, "É alimentado por IA".](../../../../public/images/ai-fails/alimentado-ia.png)
+![Discurso para uso de IA, "É alimentado por IA".](../../../../public/images/ai-fails/alimentado-ia.png)
 
 Ao mesmo tempo que a IA Generativa trouxe novas formas de resolver problemas, criou uma enorme onda de demanda para um departamento que nem existia antes na empresa. O primeiro grande problema é onde se encaixa a IA na empresa. Em algumas empresas, ficou a cargo da área de dados; em outras, da TI; em empresas menos estruturadas, ficou a cargo do departamento oculto das empresas, a Shadow IT.
 
@@ -19,11 +19,11 @@ Cria-se aqui um dos primeiros problemas. Com uma grande quantidade de ferramenta
 
 Neste ponto, uma parte das empresas entendeu que IA Generativa não é apenas um assunto do momento ou uma buzzword, mas sim um advento que veio para modificar a forma pela qual realizamos nossas tarefas, mesmo que exista um grande receio com a bolha de IA. Mas isso é assunto para outra hora. No ponto em que estamos, não tem como voltar atrás. Deixar de usar IA é ceder espaço aos concorrentes. O diferencial será utilizá-la com uma estratégia bem definida e que **não dependa de um único fornecedor**.
 
-[Robô trabalhando nos processos da empresa.](../../../../public/images/ai-fails/ai-trabalhando.png)
+![Robô trabalhando nos processos da empresa.](../../../../public/images/ai-fails/ai-trabalhando.png)
 
 A corrida pelo uso de IA nas empresas começou com atenção a dois pontos: a atenção do mercado e dos investidores e o ganho de desempenho por meio da evolução de seus processos. Uma nova tecnologia era despejada sobre o departamento técnico, que nem sempre estava preparado para utilizá-la. Decisões top-down em empresas com pouca maturidade de uso, pressão das diretorias pela adoção quando mal existe um caso de uso. É a fórmula do caos, que quase sempre tem o mesmo resultado: a falha no projeto.
 
-[Corrida das empresas pelo uso de IA, na imagem os robôs como se estivessem em uma corrida de cavalos.](../../../../public/images/ai-fails/ai-race.png)
+![Corrida das empresas pelo uso de IA, na imagem os robôs como se estivessem em uma corrida de cavalos.](../../../../public/images/ai-fails/ai-race.png)
 
 Outras empresas até conseguem usar IA, mas não têm maturidade para seus projetos, e as falhas surgem em processos posteriores. Essas falhas não são exclusivas de projetos de IA, mas, na verdade, expõem falhas internas dos processos da própria empresa.
 
@@ -55,7 +55,7 @@ Antes de escolher o modelo, o provedor ou a arquitetura, precisamos entender que
 
 Também precisamos aproximar as áreas técnicas das áreas de negócio. Um projeto de IA não deveria ser exclusivamente um projeto da TI, da área de dados ou de uma diretoria. Quem desenvolve precisa entender o problema e quem possui o problema precisa participar do desenvolvimento e da validação da solução.
 
-[IA e pessoas trabalhando juntos na solução de problemas.](../../../../public/images/ai-fails/worker-ai.png)
+![IA e pessoas trabalhando juntos na solução de problemas.](../../../../public/images/ai-fails/worker-ai.png)
 
 Começar pequeno também ajuda. Um projeto piloto não precisa resolver todos os problemas da empresa. Ele precisa responder se aquela hipótese faz sentido. Se funcionar, evoluímos. Se não funcionar, aprendemos com um custo controlado.
 

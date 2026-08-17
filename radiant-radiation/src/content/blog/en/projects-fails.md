@@ -11,7 +11,7 @@ According to major studies from [Gartner](https://www.gartner.com/en/newsroom/pr
 
 I am writing this article in 2026. Today, we have a huge range of tools that use AI to solve problems, from the simplest to the most complex. AI, in general, became widely known through Generative Artificial Intelligence. By 2020, Generative Adversarial Networks were already popular among specialized audiences for replicating image styles. LLMs continued to evolve, and then came ChatGPT. From that point on, the big boom began. Generative AI became practically synonymous with AI itself, and suddenly every startup pitch adopted AI as part of its vocabulary.
 
-[Pitching the use of AI, "It's AI-powered."](../../../../public/images/ai-fails/ai-powered.png)
+![Pitching the use of AI, "It's AI-powered."](../../../../public/images/ai-fails/ai-powered.png)
 
 At the same time that Generative AI introduced new ways to solve problems, it created an enormous wave of demand for something that did not even have a clear place within many companies. The first major question became: where does AI belong within the organization? In some companies, it became the responsibility of the data team; in others, IT took ownership; and in less structured organizations, it ended up in the hands of the company's hidden department, Shadow IT.
 
@@ -19,11 +19,11 @@ This creates one of the first problems. With so many tools available to solve ev
 
 At this point, some companies have understood that Generative AI is not simply the topic of the moment or another buzzword, but rather something that is changing the way we perform our tasks, even with the growing concerns surrounding an AI bubble. But that is a discussion for another time. Where we are today, there is no going back. Refusing to adopt AI means giving competitors room to move ahead. The real differentiator will be using it with a well-defined strategy that **does not depend on a single vendor**.
 
-[Robot working on company processes.](../../../../public/images/ai-fails/ai-working.png)
+![Robot working on company processes.](../../../../public/images/ai-fails/ai-working.png)
 
 The race to adopt AI within companies began with two main goals: attracting the attention of the market and investors, and improving performance by evolving internal processes. A new technology was suddenly handed over to technical departments that were not always prepared to use it. Top-down decisions in companies with little maturity, combined with pressure from leadership to adopt AI when there is barely a defined use case, create the perfect formula for chaos, which often leads to the same result: project failure.
 
-[Companies racing to adopt AI, represented by robots competing in a horse race.](../../../../public/images/ai-fails/ai-race.png)
+![Companies racing to adopt AI, represented by robots competing in a horse race.](../../../../public/images/ai-fails/ai-race.png)
 
 Other companies manage to adopt AI but lack the maturity required to sustain their projects, and failures begin to emerge later in the process. These failures are not exclusive to AI projects. In fact, they often expose weaknesses that already exist within the company's internal processes.
 
@@ -55,7 +55,7 @@ Before choosing the model, vendor, or architecture, we need to understand who wi
 
 We also need to bring technical and business teams closer together. An AI project should not belong exclusively to IT, the data team, or an executive department. The people building the solution need to understand the problem, and the people who own the problem need to participate in the development and validation of the solution.
 
-[AI and people working together to solve problems.](../../../../public/images/ai-fails/worker-ai.png)
+![AI and people working together to solve problems.](../../../../public/images/ai-fails/worker-ai.png)
 
 Starting small also helps. A pilot project does not need to solve every problem in the company. It needs to answer whether a hypothesis makes sense. If it works, we evolve it. If it does not, we learn at a controlled cost.
 
